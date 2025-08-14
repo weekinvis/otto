@@ -1,4 +1,0 @@
-assign valor1 = -45
-assign valor2 = -90
-
-show valor1 - valor2
