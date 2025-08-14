@@ -2,4 +2,4 @@
 
 interpretador simples...
 
-requisitos: Compilador g++20.
+requisitos: Compilador g++.
