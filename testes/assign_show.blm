@@ -1,0 +1,10 @@
+assign x = 10
+assign multiple_char = 931
+assign y = 90
+
+show x + multiple_char - y
+
+show y / 2
+show y * 3
+
+show x * x + 15

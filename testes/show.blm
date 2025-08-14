@@ -1,0 +1,4 @@
+show 5 + 10
+show 10 + 5
+assign x = 9 * 5 + 5
+show x
