@@ -42,11 +42,14 @@ int obter_valor(const std::vector<std::string>& tokens, size_t& pos)
 {
     std::string tok = tokens[pos++];
 
-    if (isnumber(tok)) {
+    if (isnumber(tok)) 
+    {
         return std::stoi(tok);
-    } else if (variaveis.count(tok)) {
+    } else if (variaveis.count(tok)) 
+    {
         return variaveis[tok];
-    } else {
+    } else 
+    {
         imprime_erro("Variavel desconhecida ou valor invalido.");
         exit(1);
     }
@@ -57,15 +60,19 @@ int obter_expressao_alta_prioridade(const std::vector<std::string>& tokens, size
 {
     int resultado = obter_valor(tokens, pos);
 
-    while (pos < tokens.size()) {
+    while (pos < tokens.size()) 
+    {
         std::string operacao = tokens[pos];
-        if (operacao == "*") {
+        if (operacao == "*") 
+        {
             pos++;
             resultado *= obter_valor(tokens, pos);
-        } else if (operacao == "/") {
+        } else if (operacao == "/") 
+        {
             pos++;
             resultado /= obter_valor(tokens, pos);
-        } else {
+        } else 
+        {
             break;
         }
     }
@@ -77,16 +84,20 @@ int obter_valores(const std::vector<std::string>& tokens, size_t& pos)
 {
     int resultado = obter_expressao_alta_prioridade(tokens, pos);
 
-    while (pos < tokens.size()) {
+    while (pos < tokens.size()) 
+    {
         std::string operacao = tokens[pos];
 
-        if(operacao == "+") {
+        if(operacao == "+") 
+        {
             pos++;
             resultado += obter_expressao_alta_prioridade(tokens, pos);
-        } else if(operacao == "-") {
+        } else if(operacao == "-") 
+        {
             pos++;
             resultado -= obter_expressao_alta_prioridade(tokens, pos);
-        } else {
+        } else 
+        {
             break;
         }
     }
@@ -96,13 +107,15 @@ int obter_valores(const std::vector<std::string>& tokens, size_t& pos)
 
 static void func_assign(const std::vector<std::string>& args)
 {
-    if(args.size() < 4 || args[2] != "=") {
+    if(args.size() < 4 || args[2] != "=") 
+    {
         imprime_erro("Sintaxe invalida para operacao de igualdade.");
         return;
     }
     std::string var = args[1];
     
-    for(const auto& par_chave_valor : comandos) {
+    for(const auto& par_chave_valor : comandos) 
+    {
         if(var == par_chave_valor.first)
         {
             imprime_erro("O nome de uma variavel nao pode ser o nome de uma funcao.");
@@ -118,7 +131,8 @@ static void func_assign(const std::vector<std::string>& args)
 
 }
 
-static void func_show(const std::vector<std::string>& args) {
+static void func_show(const std::vector<std::string>& args) 
+{
     size_t pos = 1;
     int valor = obter_valores(args, pos);
     std::cout << valor << "\n";
@@ -141,3 +155,4 @@ bool verificar_existencia_comando(const std::string& comando)
     return !(comandos.find(comando) == comandos.end());
 
 }
+
