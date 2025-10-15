@@ -12,7 +12,8 @@ static std::vector<std::string> obter_tokens(const std::string& comando_truncado
     std::vector<std::string> tokens;
     std::string token;
 
-    while(ss >> token) {
+    while(ss >> token) 
+    {
         tokens.push_back(token);
     }
 
@@ -26,7 +27,8 @@ std::string truncador(const std::string& linha)
     size_t indice_primeiro = linha.find_first_not_of(" \t\n\r");
     size_t indice_ultimo = linha.find_last_not_of(" \t\n\r");
 
-    if(indice_primeiro == std::string::npos) {
+    if(indice_primeiro == std::string::npos)
+    {
         return "";
     }
 
@@ -40,9 +42,11 @@ erro_t processa_linha(const std::string& comando_truncado)
     std::vector<std::string> tokens = obter_tokens(comando_truncado);
     if(tokens.empty()) return SUCESSO;
 
-    if(verificar_existencia_comando(tokens[0])) {
+    if(verificar_existencia_comando(tokens[0])) 
+    {
         erro = chamar(tokens);
-    } else {
+    } else 
+    {
         imprime_erro("Sintaxe ruim, comando nao encontrado.");
         return ERRO_SINTAXE_RUIM;
     }
@@ -50,3 +54,4 @@ erro_t processa_linha(const std::string& comando_truncado)
     return erro;
 
 }
+
